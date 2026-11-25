@@ -40,7 +40,7 @@ fun OfertaCard(
             Text(oferta.titulo, style = MaterialTheme.typography.titleMedium)
             Text(oferta.empresa, style = MaterialTheme.typography.bodyMedium)
             Text(
-                "📍 ${oferta.ubicacion}",
+                " ${oferta.ubicacion}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -51,7 +51,7 @@ fun OfertaCard(
             )
             if (oferta.vieneDeApi) {
                 Text(
-                    "🌐 Oferta en línea · ${oferta.origen}",
+                    " Oferta en línea · ${oferta.origen}",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.tertiary,
                 )
