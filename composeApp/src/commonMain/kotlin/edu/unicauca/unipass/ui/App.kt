@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import edu.unicauca.unipass.AppContainer
 import edu.unicauca.unipass.navegacion.Destino
 import edu.unicauca.unipass.navegacion.esPestana
+import edu.unicauca.unipass.navegacion.permiteAtras
 import edu.unicauca.unipass.ui.pantallas.AcercaScreen
 import edu.unicauca.unipass.ui.pantallas.BusquedaScreen
 import edu.unicauca.unipass.ui.pantallas.DetalleScreen
@@ -66,8 +67,8 @@ fun App(contenedor: AppContainer) {
     val destino = pila.last()
 
     UniPassTheme(modoOscuro = modoOscuro) {
-        // En Android: el botón "atrás" del sistema vuelve a la pantalla anterior.
-        ManejadorAtras(habilitado = pila.size > 1) { contenedor.navegador.volver() }
+        // En Android: el botón "atrás" vuelve a la pantalla anterior o, desde otra pestaña, a Inicio.
+        ManejadorAtras(habilitado = pila.permiteAtras) { contenedor.navegador.atras() }
 
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             if (destino.esPestana) {
