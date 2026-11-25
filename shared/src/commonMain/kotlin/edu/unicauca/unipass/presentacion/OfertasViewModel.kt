@@ -118,6 +118,21 @@ class OfertasViewModel(
         repositorio.fijarPostulacion(uid, oferta.id, "Postulación enviada")
         recargar()
     }
+
+    fun actualizarEstadoPostulacion(
+        oferta: Oferta,
+        nuevoEstado: String
+    ) {
+        val uid = usuarioId ?: return
+
+        repositorio.fijarPostulacion(
+            uid,
+            oferta.id,
+            nuevoEstado
+        )
+
+        recargar()
+    }
     fun eliminarPostulacion(oferta: Oferta) {
         val uid = usuarioId ?: return
 

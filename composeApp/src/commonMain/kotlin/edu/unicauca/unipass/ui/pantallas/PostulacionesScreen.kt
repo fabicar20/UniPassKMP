@@ -34,6 +34,9 @@ fun PostulacionesScreen(
     var ofertaSeleccionada by remember {
         mutableStateOf<Oferta?>(null)
     }
+    var ofertaParaActualizar by remember {
+        mutableStateOf<Oferta?>(null)
+    }
 
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
@@ -85,6 +88,13 @@ fun PostulacionesScreen(
                         color = MaterialTheme.colorScheme.error
                     )
                 }
+                TextButton(
+                    onClick = {
+                        ofertaParaActualizar = oferta
+                    }
+                ) {
+                    Text("Actualizar estado")
+                }
             }
         }
     }
@@ -127,5 +137,55 @@ fun PostulacionesScreen(
                 }
             }
         )
+
+        ofertaParaActualizar?.let { oferta ->
+
+            val estadosDisponibles = listOf(
+                "Postulación enviada",
+                "En revisión",
+                "Entrevista",
+                "Aceptada",
+                "Rechazada"
+            )
+
+            AlertDialog(
+                onDismissRequest = {
+                    ofertaParaActualizar = null
+                },
+                title = {
+                    Text("Actualizar estado")
+                },
+                text = {
+                    androidx.compose.foundation.layout.Column {
+                        Text("Selecciona el nuevo estado de tu postulación:")
+
+                        estadosDisponibles.forEach { nuevoEstado ->
+
+                            TextButton(
+                                onClick = {
+                                    ofertas.actualizarEstadoPostulacion(
+                                        oferta,
+                                        nuevoEstado
+                                    )
+
+                                    ofertaParaActualizar = null
+                                }
+                            ) {
+                                Text(nuevoEstado)
+                            }
+                        }
+                    }
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            ofertaParaActualizar = null
+                        }
+                    ) {
+                        Text("Cerrar")
+                    }
+                }
+            )
+        }
     }
 }
