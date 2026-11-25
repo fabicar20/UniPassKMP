@@ -24,3 +24,10 @@ actualizarPostulacion:
 UPDATE ofertaUsuario
 SET estadoPostulacion = :estado
 WHERE usuarioId = :usuarioId AND ofertaId = :ofertaId;
+
+
+eliminarPostulacion:
+UPDATE ofertaUsuario
+SET estadoPostulacion = NULL
+WHERE usuarioId = :usuarioId
+AND ofertaId = :ofertaId;

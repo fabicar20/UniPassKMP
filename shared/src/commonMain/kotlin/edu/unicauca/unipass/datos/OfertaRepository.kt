@@ -55,6 +55,9 @@ class OfertaRepository(
         }
     }
 
+    fun eliminarPostulacion(usuarioId: Long, ofertaId: Long) {
+        interacciones.eliminarPostulacion(usuarioId, ofertaId)
+    }
     // ---------- Red ----------
 
     /** Pide ofertas a la API y las guarda en la base de datos (las que ya existen se ignoran). */

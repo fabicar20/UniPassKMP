@@ -118,7 +118,13 @@ class OfertasViewModel(
         repositorio.fijarPostulacion(uid, oferta.id, "Postulación enviada")
         recargar()
     }
+    fun eliminarPostulacion(oferta: Oferta) {
+        val uid = usuarioId ?: return
 
+        repositorio.eliminarPostulacion(uid, oferta.id)
+
+        recargar()
+    }
     // ---------- Red ----------
 
     /** Primera carga automática: solo si todavía no hay ofertas de la API guardadas. */
