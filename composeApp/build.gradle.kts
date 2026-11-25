@@ -76,6 +76,13 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "UniPass"
             packageVersion = "1.0.0"
+
+            // Icono del instalador y del acceso directo en Windows
+            windows {
+                iconFile.set(project.file("icons/icono.ico"))
+                shortcut = true
+                menu = true
+            }
         }
     }
 }
