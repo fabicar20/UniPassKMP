@@ -1,0 +1,14 @@
+-- Pares clave/valor: sesión abierta y modo oscuro.
+CREATE TABLE IF NOT EXISTS preferencia (
+    clave TEXT NOT NULL PRIMARY KEY,
+    valor TEXT NOT NULL
+);
+
+obtener:
+SELECT valor FROM preferencia WHERE clave = ?;
+
+guardar:
+INSERT OR REPLACE INTO preferencia(clave, valor) VALUES (?, ?);
+
+borrar:
+DELETE FROM preferencia WHERE clave = ?;

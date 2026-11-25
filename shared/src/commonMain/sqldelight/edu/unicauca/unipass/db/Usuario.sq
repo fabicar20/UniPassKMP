@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS usuario (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    correo TEXT NOT NULL UNIQUE,
+    claveHash TEXT NOT NULL
+);
+
+insertar:
+INSERT INTO usuario(nombre, correo, claveHash) VALUES (?, ?, ?);
+
+buscarPorCorreo:
+SELECT * FROM usuario WHERE correo = ? LIMIT 1;
+
+buscarPorId:
+SELECT * FROM usuario WHERE id = ? LIMIT 1;

@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS perfil (
+    usuarioId INTEGER NOT NULL PRIMARY KEY,
+    universidad TEXT NOT NULL,
+    carrera TEXT NOT NULL,
+    semestre TEXT NOT NULL,
+    habilidades TEXT NOT NULL,
+    idiomas TEXT NOT NULL,
+    sobreMi TEXT NOT NULL
+);
+
+porUsuario:
+SELECT * FROM perfil WHERE usuarioId = ? LIMIT 1;
+
+guardar:
+INSERT OR REPLACE INTO perfil(
+    usuarioId, universidad, carrera, semestre, habilidades, idiomas, sobreMi
+) VALUES (?, ?, ?, ?, ?, ?, ?);

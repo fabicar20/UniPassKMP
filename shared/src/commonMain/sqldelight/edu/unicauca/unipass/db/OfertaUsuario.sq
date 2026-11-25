@@ -1,0 +1,26 @@
+import kotlin.Boolean;
+
+-- Lo que cada usuario hizo con cada oferta: si la guardó y/o se postuló.
+CREATE TABLE IF NOT EXISTS ofertaUsuario (
+    usuarioId INTEGER NOT NULL,
+    ofertaId INTEGER NOT NULL,
+    guardada INTEGER AS Boolean NOT NULL DEFAULT 0,
+    estadoPostulacion TEXT,
+    PRIMARY KEY (usuarioId, ofertaId)
+);
+
+porUsuario:
+SELECT * FROM ofertaUsuario WHERE usuarioId = ?;
+
+asegurarFila:
+INSERT OR IGNORE INTO ofertaUsuario(usuarioId, ofertaId) VALUES (?, ?);
+
+actualizarGuardada:
+UPDATE ofertaUsuario
+SET guardada = :guardada
+WHERE usuarioId = :usuarioId AND ofertaId = :ofertaId;
+
+actualizarPostulacion:
+UPDATE ofertaUsuario
+SET estadoPostulacion = :estado
+WHERE usuarioId = :usuarioId AND ofertaId = :ofertaId;

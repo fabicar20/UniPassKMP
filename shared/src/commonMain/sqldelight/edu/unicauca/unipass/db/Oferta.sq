@@ -1,0 +1,32 @@
+import kotlin.Boolean;
+CREATE TABLE IF NOT EXISTS oferta (
+    id INTEGER NOT NULL PRIMARY KEY,
+    titulo TEXT NOT NULL,
+    empresa TEXT NOT NULL,
+    ubicacion TEXT NOT NULL,
+    modalidad TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    remuneracion TEXT NOT NULL,
+    duracion TEXT NOT NULL,
+    horario TEXT NOT NULL,
+    responsabilidades TEXT NOT NULL,
+    requisitos TEXT NOT NULL,
+    validaRequisitoGrado INTEGER AS Boolean NOT NULL DEFAULT 1,
+    descripcion TEXT NOT NULL,
+    urlOriginal TEXT NOT NULL,
+    origen TEXT NOT NULL,
+    fechaPublicacion TEXT
+);
+
+todas:
+SELECT * FROM oferta ORDER BY id;
+
+contar:
+SELECT COUNT(*) FROM oferta;
+
+insertarOIgnorar:
+INSERT OR IGNORE INTO oferta(
+    id, titulo, empresa, ubicacion, modalidad, tipo, remuneracion,
+    duracion, horario, responsabilidades, requisitos, validaRequisitoGrado,
+    descripcion, urlOriginal, origen, fechaPublicacion
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
