@@ -66,11 +66,11 @@ fun DetalleScreen(
                     titulo = if (oferta.validaRequisitoGrado) "✓ Válida para requisito de grado"
                     else "No válida para requisito de grado",
                 ) {
-                    Dato("📍 Ubicación", oferta.ubicacion)
-                    Dato("⏱ Duración", oferta.duracion)
-                    Dato("🗓 Horario", oferta.horario)
-                    Dato("💵 Remuneración", oferta.remuneracion)
-                    oferta.fechaPublicacion?.let { Dato("📅 Publicación", it) }
+                    Dato(" Ubicación", oferta.ubicacion)
+                    Dato("Duración", oferta.duracion)
+                    Dato(" Horario", oferta.horario)
+                    Dato(" Remuneración", oferta.remuneracion)
+                    oferta.fechaPublicacion?.let { Dato(" Publicación", it) }
                 }
 
                 if (oferta.listaResponsabilidades.isNotEmpty()) {
